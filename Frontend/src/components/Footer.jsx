@@ -7,10 +7,10 @@ import { site } from '../data/siteData';
 export default function Footer() {
   return (
     <footer className="bg-[#0b1020] text-white">
-      <div className="container-shell py-12 sm:py-14 md:py-16">
+      <div className="container-shell pt-12 sm:pt-14 md:pt-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_.6fr_1fr]">
           <div>
-            <div className="flex items-center gap-3"><div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#d7aa52]/15 text-[#d7aa52]"><MapPin size={20} /></div><span className="font-serif text-2xl">Saran</span></div>
+            <div className="flex items-center gap-3"><div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#d7aa52]/15 text-[#d7aa52]">S</div><span className="font-serif text-2xl">Saranesh Edu Hub</span></div>
             <p className="mt-4 max-w-md text-sm leading-7 text-[#cbd5e1]">Thoughtful teaching, focused preparation and personal mentorship for students who want to understand better, practise smarter and move ahead with confidence.</p>
             <div className="mt-5"><SocialLinks compact /></div>
           </div>
@@ -29,7 +29,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-10 grid gap-4 border-t border-white/10 pt-6 text-xs text-[#94a3b8] md:grid-cols-2 md:items-center">
+        <div className="mt-10 grid gap-4 border-t border-white/10 py-5 text-xs text-[#94a3b8] md:grid-cols-2 md:items-center">
           <span>© {new Date().getFullYear()} Saran Coaching Classes. All rights reserved.</span>
           <span className="md:text-right">Developed by <a href="mailto:adityakumar9377@gmail.com" className="font-semibold text-[#d7aa52] hover:underline">Aditya</a> | <a href="mailto:adityakumar9377@gmail.com" className="hover:text-white">adityakumar9377@gmail.com</a> | <a href="tel:+919005825347" className="hover:text-white">9005825347</a></span>
         </div>

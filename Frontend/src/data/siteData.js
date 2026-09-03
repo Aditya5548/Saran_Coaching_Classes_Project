@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const site = {
-  name: 'Saran Coaching Classes',
-  shortName: 'Saran',
-  phone: '+91 90058 25347',
-  email: 'info@sarancoachingclasses.com',
+  name: 'Saranesh Edu Hub',
+  shortName: 'Saranesh',
+  phone: '+91 63062 93909',
+  email: 'saranesheduhub@gmail.com',
   receiverMap: 'https://www.google.com/maps/search/?api=1&query=26.8854,81.0715',
   coordinates: '26.8854° N, 81.0715° E',
   social: {
