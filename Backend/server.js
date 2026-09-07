@@ -16,13 +16,17 @@ app.use(
     credentials: false,
   })
 );
+
 app.use(express.json({ limit: '100kb' }));
 
 app.get('/api/health', (_req, res) => {
   res.json({
     status: 'ok',
     service: 'Saran Coaching Classes API',
-    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    database:
+      mongoose.connection.readyState === 1
+        ? 'connected'
+        : 'disconnected',
   });
 });
 
@@ -31,7 +35,9 @@ app.use('/api/counselling', counsellingRoutes);
 
 app.use((err, _req, res, _next) => {
   console.error('Unhandled server error:', err);
-  res.status(500).json({ message: 'Internal server error.' });
+  res.status(500).json({
+    message: 'Internal server error.',
+  });
 });
 
 async function startServer() {
@@ -48,4 +54,8 @@ async function startServer() {
   }
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
+
+export default app;
