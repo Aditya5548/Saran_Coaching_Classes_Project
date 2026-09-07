@@ -14,7 +14,7 @@ export default function PageHeader({ eyebrow, title, text, image, action }) {
           <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">{text}</p>
           {action && <div className="mt-6">{action}</div>}
         </motion.div>
-        {image && <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .5 }} className="hidden lg:block overflow-hidden rounded-[2rem] border border-white bg-white p-2 shadow-soft"><img src={image} alt="" className="h-52 w-full rounded-[1.5rem] object-cover" /></motion.div>}
+        {image && <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .5 }} className="hidden lg:flex items-center justify-center overflow-hidden rounded-[2rem] border border-white bg-white p-6 shadow-soft"><img src={image} alt="" className="h-52 w-full rounded-[1.5rem] object-contain" /></motion.div>}
       </div>
     </section>
   );

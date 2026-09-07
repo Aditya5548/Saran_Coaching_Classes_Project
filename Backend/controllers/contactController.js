@@ -8,7 +8,7 @@ export async function createContactEnquiry(req, res) {
     const name = clean(req.body.name);
     const phone = clean(req.body.phone);
     const email = clean(req.body.email);
-    const course = clean(req.body.course);
+    const service = clean(req.body.service);
     const message = clean(req.body.message);
 
     if (!name || !phone) {
@@ -24,23 +24,23 @@ export async function createContactEnquiry(req, res) {
       return res.status(503).json({ message: 'Database is temporarily unavailable. Please try again.' });
     }
 
-    const enquiry = await Enquiry.create({ name, phone, email, course, message });
+    const enquiry = await Enquiry.create({ name, phone, email, service, message });
     let emailed = false;
 
     try {
       emailed = await sendNotificationEmail({
-        subject: `New Coaching Enquiry — ${name}`,
+        subject: `New Service Enquiry — ${name}`,
         replyTo: email,
         text: [
-          'New enquiry received from Saran Coaching Classes website.',
+          'New service enquiry received from Saran website.',
           `Name: ${name}`,
           `Phone: ${phone}`,
           `Email: ${email || 'Not provided'}`,
-          `Course: ${course || 'Not selected'}`,
+          `Service: ${service || 'Not selected'}`,
           `Message: ${message || 'No message'}`,
           `Enquiry ID: ${enquiry._id}`,
         ].join('\n'),
-        html: buildContactEmail({ name, phone, email, course, message, enquiryId: enquiry._id }),
+        html: buildContactEmail({ name, phone, email, service, message, enquiryId: enquiry._id }),
       });
     } catch (mailError) {
       console.error('Contact email failed:', mailError);

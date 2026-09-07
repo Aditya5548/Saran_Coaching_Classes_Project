@@ -108,21 +108,21 @@ function emailShell({ badge, title, intro, content, footerNote = '' }) {
 </html>`;
 }
 
-export function buildContactEmail({ name, phone, email, course, message }) {
+export function buildContactEmail({ name, phone, email, service, message, enquiryId }) {
   return emailShell({
     badge: 'New Enquiry',
-    title: `New enquiry from ${name}`,
-    intro: 'A new enquiry has been submitted through from the website.',
+    title: `New service enquiry from ${name}`,
+    intro: 'A new service enquiry has been submitted through the Saran website.',
     content: [
       field('Name', name),
       field('Phone', phone),
       field('Email', email || 'Not provided'),
-      field('Course', course || 'Not selected'),
+      field('Service requested', service || 'Not selected'),
       field('Message', message || 'No message'),
     ].join(''),
     footerNote: email
       ? 'Reply to this email to contact the person directly.'
-      : '',
+      : 'This notification was submitted through the Saran website.',
   });
 }
 
@@ -143,7 +143,7 @@ export function buildCounsellingEmail({ studentName, parentName, phone, email, c
     ].join(''),
     footerNote: email
       ? 'Reply to this email to contact the parent or student directly.'
-      : '',
+      : 'This notification was submitted through the Saran website.',
   });
 }
 
