@@ -10,7 +10,7 @@ export default function CounsellorForm() {
   async function submit(e) {
     e.preventDefault(); setStatus({ type: 'loading', text: 'Booking your counselling request…' });
     try {
-      const base = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const base = import.meta.env.VITE_API_URL || 'https://saran-coaching-classes-project-33vd.vercel.app';
       const res = await fetch(`${base}/api/counselling`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
       const data = await res.json(); if (!res.ok) throw new Error(data.message || 'Unable to submit request.');
       setStatus({ type: 'success', text: data.message || 'Counselling request received successfully.' }); setForm(initial);
