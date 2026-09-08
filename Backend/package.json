@@ -1,10 +1,10 @@
 {
-  "name": "saran-coaching-classes-server",
+  "name": "Backend",
   "version": "1.0.0",
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "dev": "node --watch server.js",
+    "dev": "node server.js",
     "start": "node server.js"
   },
   "dependencies": {
@@ -12,6 +12,6 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.9.3",
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^6.10.0"
   }
 }
