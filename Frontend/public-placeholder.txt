@@ -1,2 +1,0 @@
-For Netlify deployment, add a _redirects file inside client/public with:
-/*    /index.html   200
