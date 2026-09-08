@@ -14,8 +14,9 @@ app.use(cors());
 app.use(express.json({ limit: '100kb' }));
 initializeMailer();
 connectDB();
+
 app.get('/', (_req, res) => {
-  res.json({ message: 'Welcome to the Saranesh Edu Hub',});
+  res.json({ message: 'Welcome to the Saranesh Edu Hub' });
 });
 
 app.use('/api/contact', contactRoutes);
@@ -24,12 +25,12 @@ app.use('/api/counselling', counsellingRoutes);
 app.use((err, _req, res, _next) => {
   console.error('Unhandled server error:', err);
   res.status(500).json({
-    message: 'Internal server error.',
+    message: 'Internal server error.'
   });
 });
 
-app.listen(PORT,()=>{
-    console.log(`Server is Running on http://localhost:${PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`Server is Running on http://localhost:${PORT}`);
+});
 
 export default app;
