@@ -54,7 +54,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="border-b border-slate-200 bg-white">
         <div className="container-shell grid grid-cols-1 divide-y divide-slate-200 min-[450px]:grid-cols-2 min-[450px]:divide-x sm:grid-cols-4 sm:divide-y-0">
           {[['01', 'Coaching'], ['02', 'Admissions'], ['03', 'Digital Services'], ['04', 'Technology']].map(([n, t]) => (
@@ -65,7 +64,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       <section className="py-16 sm:py-20 md:py-24">
         <div className="container-shell">
           <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-14">
@@ -94,7 +92,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="bg-[#eeeae1] py-16 sm:py-20 md:py-24">
         <div className="container-shell grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:gap-16">
           <div className="flex flex-col">
@@ -129,7 +126,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="py-16 sm:py-20 md:py-24">
         <div className="container-shell">
           <div className="rounded-[2rem] bg-ink px-6 py-10 text-white sm:px-10 sm:py-14 md:px-14 md:py-16 lg:px-16">

@@ -13,31 +13,9 @@ const PORT = Number(process.env.PORT || 5000);
 app.use(cors());
 app.use(express.json({ limit: '100kb' }));
 
-let mailerInitialized = false;
-app.use(async (req, res, next) => {
-  if (process.env.VERCEL) {
-    if (mongoose.connection.readyState !== 1) {
-      try {
-        await connectDatabase();
-      } catch (err) {
-        console.error('Vercel DB Connection Error:', err);
-      }
-    }
-    if (!mailerInitialized) {
-      try {
-        initializeMailer();
-        mailerInitialized = true;
-      } catch (err) {
-        console.error('Vercel Mailer Init Error:', err);
-      }
-    }
-  }
-  next();
-});
-
 app.get('/', (_req, res) => {
   res.json({
-    message: 'Welcome to the Saran Coaching Classes API',
+    message: 'Welcome to the Saranesh Edu Hub',
   });
 });
 
@@ -45,10 +23,7 @@ app.get('/api/health', (_req, res) => {
   res.json({
     status: 'ok',
     service: 'Saran Coaching Classes API',
-    database:
-      mongoose.connection.readyState === 1
-        ? 'connected'
-        : 'disconnected',
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
   });
 });
 
@@ -62,22 +37,25 @@ app.use((err, _req, res, _next) => {
   });
 });
 
-async function startServer() {
+const initServices = async () => {
   try {
-    await connectDatabase();
+    if (mongoose.connection.readyState !== 1) {
+      await connectDatabase();
+    }
     initializeMailer();
+  } catch (err) {
+    console.error('Service initialization error:', err);
+  }
+};
 
+if (process.env.VERCEL) {
+  initServices();
+} else {
+  initServices().then(() => {
     app.listen(PORT, () => {
       console.log(`Saran API running on http://localhost:${PORT}`);
     });
-  } catch (error) {
-    console.error('Server startup failed:', error.message);
-    process.exit(1);
-  }
-}
-
-if (!process.env.VERCEL) {
-  startServer();
+  });
 }
 
 export default app;

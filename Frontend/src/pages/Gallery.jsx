@@ -5,6 +5,52 @@ import PageHeader from '../components/PageHeader';
 import { gallery } from '../data/siteData';
 
 export default function Gallery() {
-    const tags = useMemo(() => ['All', ...new Set(gallery.map(x => x.tag))], []); const [active, setActive] = useState('All'); const filtered = active === 'All' ? gallery : gallery.filter(x => x.tag === active);
-    return <><PageHeader eyebrow="Gallery" title="A glimpse of learning, guidance and digital support." text="Explore representative visuals for the Saranesh Edu Hub experience. Replace these with the client’s real centre photos whenever available." image="/assets/logo.png" /><section className="py-12 sm:py-16 md:py-20"><div className="container-shell"><div className="flex items-end justify-between gap-4"><div><div className="text-xs font-extrabold uppercase tracking-[.2em] text-slate-500">Explore moments</div><h2 className="mt-2 font-display text-3xl sm:text-4xl">Learning in action</h2></div><Link to="/contact" className="hidden rounded-full bg-ink px-4 py-3 text-sm font-extrabold text-white sm:inline-flex items-center gap-2">Get in touch <ArrowUpRight size={16} /></Link></div><div className="scrollbar-hide mt-7 flex gap-2 overflow-x-auto pb-2">{tags.map(tag => <button key={tag} type="button" onClick={() => setActive(tag)} className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-bold transition ${active === tag ? 'bg-ink text-white' : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}>{tag}</button>)}</div><div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{filtered.map((item, index) => <article key={item.title} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft"><div className="overflow-hidden"><img src={item.image} alt={item.title} loading="lazy" className="h-64 w-full object-cover transition duration-700 group-hover:scale-105" /></div><div className="p-5"><div className="text-[10px] font-extrabold uppercase tracking-[.18em] text-gold">{item.tag}</div><h3 className="mt-2 font-display text-2xl">{item.title}</h3><p className="mt-2 text-sm leading-6 text-slate-500">A representative visual for the Saranesh Edu Hub service experience.</p></div></article>)}</div></div></section></>;
+    const tags = useMemo(() => ['All', ...new Set(gallery.map(x => x.tag))], []);
+    const [active, setActive] = useState('All');
+    const filtered = active === 'All' ? gallery : gallery.filter(x => x.tag === active);
+
+    return (
+        <>
+            <PageHeader
+                eyebrow="Gallery"
+                title="A glimpse of learning, guidance and digital support."
+                text="Explore representative visuals for the Saranesh Edu Hub experience. Replace these with the client’s real centre photos whenever available."
+                image="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1000"
+            />
+            <section className="py-12 sm:py-16 md:py-20">
+                <div className="container-shell">
+                    <div className="flex items-end justify-between gap-4">
+                        <div>
+                            <div className="text-xs font-extrabold uppercase tracking-[.2em] text-slate-500">Explore moments</div>
+                            <h2 className="mt-2 font-display text-3xl sm:text-4xl">Learning in action</h2>
+                        </div>
+                        <Link to="/contact" className="hidden rounded-full bg-ink px-4 py-3 text-sm font-extrabold text-white sm:inline-flex items-center gap-2">
+                            Get in touch <ArrowUpRight size={16} />
+                        </Link>
+                    </div>
+                    <div className="scrollbar-hide mt-7 flex gap-2 overflow-x-auto pb-2">
+                        {tags.map(tag => (
+                            <button key={tag} type="button" onClick={() => setActive(tag)} className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-bold transition ${active === tag ? 'bg-ink text-white' : 'border border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}>
+                                {tag}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        {filtered.map((item) => (
+                            <article key={item.title} className="group overflow-hidden rounded-[1.75rem] bg-white shadow-soft">
+                                <div className="overflow-hidden">
+                                    <img src={item.image} alt={item.title} loading="lazy" className="h-64 w-full object-cover transition duration-700 group-hover:scale-105" />
+                                </div>
+                                <div className="p-5">
+                                    <div className="text-[10px] font-extrabold uppercase tracking-[.18em] text-gold">{item.tag}</div>
+                                    <h3 className="mt-2 font-display text-2xl">{item.title}</h3>
+                                    <p className="mt-2 text-sm leading-6 text-slate-500">A representative visual for the Saranesh Edu Hub service experience.</p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </>
+    );
 }
