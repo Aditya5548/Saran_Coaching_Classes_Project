@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import CounsellingRequest from '../models/CounsellingRequest.js';
 import { buildCounsellingEmail, sendNotificationEmail } from '../services/emailService.js';
 import { clean, isValidEmail, isValidPhone } from '../utils/validators.js';
@@ -24,9 +23,6 @@ export async function createCounsellingRequest(req, res) {
     }
     if (!isValidEmail(email)) {
       return res.status(400).json({ message: 'Please enter a valid email.' });
-    }
-    if (mongoose.connection.readyState !== 1) {
-      return res.status(503).json({ message: 'Database is temporarily unavailable. Please try again.' });
     }
 
     const request = await CounsellingRequest.create({

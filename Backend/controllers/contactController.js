@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import Enquiry from '../models/Enquiry.js';
 import { buildContactEmail, sendNotificationEmail } from '../services/emailService.js';
 import { clean, isValidEmail, isValidPhone } from '../utils/validators.js';
@@ -19,9 +18,6 @@ export async function createContactEnquiry(req, res) {
     }
     if (!isValidEmail(email)) {
       return res.status(400).json({ message: 'Please enter a valid email.' });
-    }
-    if (mongoose.connection.readyState !== 1) {
-      return res.status(503).json({ message: 'Database is temporarily unavailable. Please try again.' });
     }
 
     const enquiry = await Enquiry.create({ name, phone, email, service, message });
