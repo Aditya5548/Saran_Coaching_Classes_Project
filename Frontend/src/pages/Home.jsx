@@ -3,6 +3,7 @@ import { ArrowUpRight, CheckCircle2, ChevronRight, Code2, GraduationCap, Landmar
 import { Link } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 import { services, site } from '../data/siteData';
+import Logo from '../assets/logo.png';
 
 const featured = services.slice(0, 6);
 const icons = { 0: GraduationCap, 1: GraduationCap, 2: CheckCircle2, 3: Monitor, 4: Monitor, 5: Landmark };
@@ -45,7 +46,7 @@ export default function Home() {
             <div className="absolute -inset-5 rounded-[2.5rem] bg-gold/10 blur-2xl" />
             <div className="relative flex min-h-[380px] w-full items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-6 pb-28 shadow-2xl backdrop-blur-xl sm:min-h-[450px] sm:p-8 sm:pb-32 lg:min-h-[540px] lg:p-10 lg:pb-36">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(220,174,74,.18),transparent_35%),radial-gradient(circle_at_70%_70%,rgba(255,255,255,.08),transparent_40%)]" />
-              <img src="/assets/logo.png" alt="Saranesh Edu Hub logo" className="relative h-48 w-48 object-contain drop-shadow-2xl sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
+              <img src={Logo} alt="Saranesh Edu Hub logo" className="relative h-48 w-48 object-contain drop-shadow-2xl sm:h-64 sm:w-64 lg:h-72 lg:w-72" />
               <div className="absolute bottom-4 left-4 right-4 flex flex-col rounded-2xl border border-white/10 bg-ink/80 p-4 backdrop-blur-xl sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8 lg:p-5">
                 <div className="text-[9px] font-extrabold uppercase tracking-[.18em] text-gold sm:text-[10px] lg:text-xs">Saranesh Edu Hub</div>
                 <div className="mt-1 font-display text-lg sm:mt-2 sm:text-xl lg:text-2xl">Learning + Services + Solutions</div>
