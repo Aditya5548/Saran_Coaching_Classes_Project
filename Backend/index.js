@@ -11,6 +11,7 @@ const app = express();
 const PORT = Number(process.env.PORT || 5000);
 
 app.use(cors());
+app.options('*', cors());
 app.use(express.json({ limit: '100kb' }));
 initializeMailer();
 connectDB();
