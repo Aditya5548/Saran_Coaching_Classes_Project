@@ -19,7 +19,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus({ type: 'loading', text: 'Sending your enquiry…' });
     try {
-      const base = import.meta.env.VITE_API_URL || 'https://saran-coaching-classes-project-qavc.vercel.app';
+      const base = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const res = await fetch(`${base}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
